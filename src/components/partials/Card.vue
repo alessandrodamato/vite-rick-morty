@@ -13,13 +13,13 @@
 
 <template>
 
-  <div class="col text-center mb-3">
+  <div class="col text-center mb-5">
 
-    <div class="rounded-50 overflow-hidden">
+    <div class="rounded-50 overflow-hidden mb-3">
       <img class="w-100" :src="image" :alt="name">
     </div>
-    <h3>{{ name }}</h3>
-    <div>{{ status }}</div>
+    <h3 class="mb-3">{{ name }}</h3>
+    <div class="status py-3">{{ status }}</div>
     <div>{{ species }}</div>
 
   </div>
@@ -29,5 +29,11 @@
 
 
 <style lang="scss" scoped>
+
+.status{
+  width: 70px;
+  margin: 0 auto;
+  border-top: 1px solid black;
+}
 
 </style>

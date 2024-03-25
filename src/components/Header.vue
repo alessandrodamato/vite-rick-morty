@@ -8,9 +8,15 @@ import { store } from '../data/store'
       }
     },
 
-    computed:{
+    methods:{
       searchByName(){
-        return this.store.cardsList.filter(card => card.name.toLowerCase().includes(this.nameToSearch.toLowerCase()));
+        this.store.cardsList.forEach(card => {
+          if (!card.name.toLowerCase().includes(this.nameToSearch.toLowerCase())) {
+            card.visible = false
+          } else{
+            card.visible = true
+          }
+        })
       }
     }
   }
@@ -30,16 +36,16 @@ import { store } from '../data/store'
         type="text"
         class="form-control mx-2"
         placeholder="Search character"
-        @keyup.enter="searchByName"
-        v-model="store.nameToSearch" 
+        @keyup.enter="searchByName()"
+        v-model.trim="nameToSearch" 
       >
 
       <select class="form-select mx-2">
         <option value="0">Select Status...</option>
       </select>
 
-      <button @click="searchByName" class="btn btn-primary mx-2">Search</button>
-      <button class="btn btn-warning mx-2">Reset</button>
+      <button @click="searchByName()" class="btn btn-primary mx-2">Search</button>
+      <button @click="nameToSearch = ''; searchByName()" class="btn btn-warning mx-2">Reset</button>
 
     </nav>
 
