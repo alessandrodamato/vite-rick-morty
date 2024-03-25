@@ -4,14 +4,15 @@ import { store } from '../data/store'
     data(){
       return{
         store,
-        nameToSearch: ''
+        nameToSearch: '',
+        statusToSearch: ''
       }
     },
 
     methods:{
-      searchByName(){
+      search(){
         this.store.cardsList.forEach(card => {
-          if (!card.name.toLowerCase().includes(this.nameToSearch.toLowerCase())) {
+          if (!card.name.toLowerCase().includes(this.nameToSearch.toLowerCase()) || !card.status.includes(this.statusToSearch)) {
             card.visible = false
           } else{
             card.visible = true
@@ -36,16 +37,19 @@ import { store } from '../data/store'
         type="text"
         class="form-control mx-2"
         placeholder="Search character"
-        @keyup.enter="searchByName()"
+        @keyup.enter="search()"
         v-model.trim="nameToSearch" 
       >
 
-      <select class="form-select mx-2">
-        <option value="0">Select Status...</option>
+      <select class="form-select mx-2" v-model="statusToSearch">
+        <option value="" selected>Select Status...</option>
+        <option value="Alive">Alive</option>
+        <option value="Dead">Dead</option>
+        <option value="unknown">unknown</option>
       </select>
 
-      <button @click="searchByName()" class="btn btn-primary mx-2">Search</button>
-      <button @click="nameToSearch = ''; searchByName()" class="btn btn-warning mx-2">Reset</button>
+      <button @click="search()" class="btn btn-primary mx-2">Search</button>
+      <button @click="nameToSearch = ''; statusToSearch = ''; search()" class="btn btn-warning mx-2">Reset</button>
 
     </nav>
 
