@@ -15,7 +15,7 @@
 
   <div class="col text-center mb-5">
 
-    <div class="rounded-50 overflow-hidden mb-3">
+    <div class="rounded-50 overflow-hidden mb-3 image">
       <img class="w-100" :src="image" :alt="name">
     </div>
     <h3 class="mb-3">{{ name }}</h3>
@@ -29,6 +29,13 @@
 
 
 <style lang="scss" scoped>
+
+.image{
+  &:hover{
+    scale: 1.05;
+    box-shadow: 0 0 10px 10px grey;
+  }
+}
 
 .status{
   width: 70px;

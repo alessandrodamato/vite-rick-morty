@@ -10,6 +10,7 @@ import { store } from '../data/store'
     },
 
     methods:{
+
       search(){
         this.store.cardsList.forEach(card => {
           if (!card.name.toLowerCase().includes(this.nameToSearch.toLowerCase()) || !card.status.includes(this.statusToSearch)) {
@@ -19,6 +20,7 @@ import { store } from '../data/store'
           }
         })
       }
+
     }
   }
 </script>
@@ -62,6 +64,7 @@ import { store } from '../data/store'
 <style lang="scss" scoped>
 
   header{
+    background-color: rgb(230, 99, 99);
     input{
       width: 300px;
     }

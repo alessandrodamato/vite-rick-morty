@@ -46,4 +46,8 @@ import Card from './partials/Card.vue'
 
 <style lang="scss" scoped>
 
+  main{
+    background: linear-gradient(#e66465, #9198e5);
+  }
+
 </style>
