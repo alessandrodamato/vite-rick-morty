@@ -21,7 +21,8 @@ import Footer from './components/Footer.vue'
       getApi(){
         axios.get(this.store.apiUrl)
         .then(res => {
-          console.log(res.data.results);
+          this.store.cardsList = res.data.results;
+          console.log(this.store.cardsList);
         })
         .catch(error => {
           console.log(error);
