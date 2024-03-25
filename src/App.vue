@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios'
+import { store } from './data/store'
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
 import Footer from './components/Footer.vue'
@@ -7,6 +9,28 @@ import Footer from './components/Footer.vue'
       Header,
       Main,
       Footer
+    },
+
+    data(){
+      return{
+        store
+      }
+    },
+
+    methods:{
+      getApi(){
+        axios.get(this.store.apiUrl)
+        .then(res => {
+          console.log(res.data.results);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    },
+
+    mounted(){
+      this.getApi();
     }
   }
 </script>
