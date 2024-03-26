@@ -3,23 +3,11 @@ import { store } from '../data/store'
   export default {
     data(){
       return{
-        store,
-        nameToSearch: '',
-        statusToSearch: ''
+        store
       }
     },
 
     methods:{
-
-      search(){
-        this.store.cardsList.forEach(card => {
-          if (!card.name.toLowerCase().includes(this.nameToSearch.toLowerCase()) || !card.status.includes(this.statusToSearch)) {
-            card.visible = false
-          } else{
-            card.visible = true
-          }
-        })
-      }
 
     }
   }
@@ -44,10 +32,10 @@ import { store } from '../data/store'
       >
 
       <select class="form-select mx-2" v-model="statusToSearch">
-        <option value="" selected>Select Status...</option>
+        <!-- <option value="" selected>Select Status...</option>
         <option value="Alive">Alive</option>
         <option value="Dead">Dead</option>
-        <option value="unknown">unknown</option>
+        <option value="unknown">unknown</option> -->
       </select>
 
       <button @click="search()" class="btn btn-primary mx-2">Search</button>

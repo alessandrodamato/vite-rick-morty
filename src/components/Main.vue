@@ -31,7 +31,6 @@ import Card from './partials/Card.vue'
         :status="card.status"
         :species="card.species"
         :image="card.image"
-        :class="{'d-none' : card.visible === false}"
         />
         
       </div>
