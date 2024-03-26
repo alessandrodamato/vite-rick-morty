@@ -24,9 +24,12 @@ import Footer from './components/Footer.vue'
         })
         .then(res => {
           this.store.cardsList = res.data.results;
+          this.store.isError = false
           console.log(this.store.cardsList);
         })
         .catch(error => {
+          this.store.cardsList = [];
+          this.store.isError = true
           console.log(error);
         })
       }

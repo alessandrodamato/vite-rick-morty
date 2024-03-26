@@ -22,6 +22,7 @@ import Card from './partials/Card.vue'
 
     <div class="container">
       
+      <div v-if="store.isError" class="text-center fs-1">Nessuna ricerca trovata</div>
       <div class="row row-cols-4">
 
         <Card 
@@ -47,6 +48,7 @@ import Card from './partials/Card.vue'
 
   main{
     background: linear-gradient(#e66465, #9198e5);
+    min-height: calc(100vh - 230px - 96px);
   }
 
 </style>
