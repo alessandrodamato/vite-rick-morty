@@ -5,6 +5,8 @@ export const store = reactive ({
   cardsList: [],
   isError: false,
   queryParams:{
-    name: ''
+    name: '',
+    status: '',
+    species: ''
   }
 })

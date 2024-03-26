@@ -5,10 +5,6 @@ import { store } from '../data/store'
       return{
         store,
       }
-    },
-
-    methods:{
-
     }
   }
 </script>
