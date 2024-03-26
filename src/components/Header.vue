@@ -3,7 +3,7 @@ import { store } from '../data/store'
   export default {
     data(){
       return{
-        store
+        store,
       }
     },
 
@@ -27,19 +27,12 @@ import { store } from '../data/store'
         type="text"
         class="form-control mx-2"
         placeholder="Search character"
-        @keyup.enter="search()"
-        v-model.trim="nameToSearch" 
+        @keyup.enter="$emit('searchByName')"
+        v-model="this.store.queryParams.name"
       >
 
-      <select class="form-select mx-2" v-model="statusToSearch">
-        <!-- <option value="" selected>Select Status...</option>
-        <option value="Alive">Alive</option>
-        <option value="Dead">Dead</option>
-        <option value="unknown">unknown</option> -->
-      </select>
-
-      <button @click="search()" class="btn btn-primary mx-2">Search</button>
-      <button @click="nameToSearch = ''; statusToSearch = ''; search()" class="btn btn-warning mx-2">Reset</button>
+      <button @click="$emit('searchByName')" class="btn btn-primary mx-2">Search</button>
+      <button @click="this.store.queryParams = {}; $emit('searchByName')" class="btn btn-warning mx-2">Reset</button>
 
     </nav>
 

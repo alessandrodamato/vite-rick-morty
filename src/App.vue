@@ -19,9 +19,12 @@ import Footer from './components/Footer.vue'
 
     methods:{
       getApi(){
-        axios.get(this.store.apiUrl)
+        axios.get(this.store.apiUrl, {
+          params: this.store.queryParams
+        })
         .then(res => {
           this.store.cardsList = res.data.results;
+          console.log(this.store.cardsList);
         })
         .catch(error => {
           console.log(error);
@@ -39,7 +42,7 @@ import Footer from './components/Footer.vue'
 
 <template>
 
-  <Header />
+  <Header @searchByName="getApi" />
 
   <Main />
   
