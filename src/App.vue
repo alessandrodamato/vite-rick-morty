@@ -19,29 +19,33 @@ export default {
 
   methods: {
     getApi() {
-      axios.get(this.store.apiUrl, {
+      const url = this.store.hasNext ? this.store.info.next : this.store.hasPrev ? this.store.info.prev : null;
+      axios.get(url ? url : this.store.apiUrl, {
         params: this.store.queryParams
       })
-        .then(res => {
-          this.store.cardsList = res.data.results;
-          this.store.isError = false
-          this.store.pages = res.data.info.pages
-          this.store.cardsList.forEach(card => {
-            if (!this.store.statusList.includes(card.status)) {
+      .then(res => {
+        this.store.cardsList = res.data.results;
+        this.store.info = res.data.info;
+        this.store.isError = false;
+
+        this.store.cardsList.forEach(card => {
+          if (!this.store.statusList.includes(card.status)) {
             this.store.statusList.push(card.status)
           }
-          })
-          this.getAllPages()
         })
-        .catch(error => {
-          this.store.cardsList = [];
-          this.store.isError = true
-          console.log(error);
-        })
+        if (!url) {this.setSpecies()}
+        this.updateButtons();
+      })
+      .catch(error => {
+        this.store.cardsList = [];
+        this.store.isVisible = false;
+        this.store.isError = true;
+        console.log(error);
+      })
     },
 
-    getAllPages() {
-      for (let i = 2; i < this.store.pages; i++) {
+    setSpecies() {
+      for (let i = 1; i <= this.store.info.pages; i++) {
         axios.get(this.store.apiUrl, {
           params: {
             page: i
@@ -59,6 +63,25 @@ export default {
           console.log(error);
         })
       }
+    },
+
+    updateButtons(){
+      if (this.store.currentPage === 1 && this.store.info.pages === 1){
+        this.store.isVisible = false
+      } else {
+        this.store.isVisible = true
+        if (this.store.currentPage <= 1) {
+        this.store.isPrevDisabled = true
+        } else if (this.store.currentPage === this.store.info.pages) {
+          this.store.isNextDisabled = true
+        }
+      } 
+    },
+
+    resetPaginator(){
+      this.store.hasNext = false;
+      this.store.hasPrev = false;
+      this.store.currentPage = 1;
     }
   },
 
@@ -72,11 +95,11 @@ export default {
 
 <template>
 
-  <Header @search="getApi" />
+  <Header @search="getApi" @resetPaginator="resetPaginator" />
 
   <Main />
 
-  <Footer />
+  <Footer @search="getApi" />
 
 </template>
 

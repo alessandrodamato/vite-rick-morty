@@ -22,7 +22,7 @@ import Card from './partials/Card.vue'
 
     <div class="container">
       
-      <div v-if="store.isError" class="text-center fs-1">Nessuna ricerca trovata</div>
+      <div v-if="store.isError" class="text-center fs-1">Nessun risultato trovato!</div>
       <div class="row row-cols-4">
 
         <Card 

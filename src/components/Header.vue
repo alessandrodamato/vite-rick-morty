@@ -23,37 +23,38 @@ import { store } from '../data/store'
         type="text"
         class="form-control mx-2"
         placeholder="Search character"
-        @keyup.enter="$emit('search')"
+        @keyup.enter="$emit('resetPaginator'); 
+        $emit('search')"
         v-model="this.store.queryParams.name"
       >
 
       <select class="form-select mx-2" v-model="this.store.queryParams.status">
-        <option
-          v-for="(status, index) in this.store.statusList"
-          :key="`status-${index}`"
-          :value="status"
-        >
+        <option v-for="(status, index) in this.store.statusList" :key="`status-${index}`" :value="status">
           {{ status }}
         </option>
       </select>
 
       <select class="form-select mx-2" v-model="this.store.queryParams.species">
-        <option
-          v-for="(species, index) in this.store.speciesList"
-          :key="`species-${index}`"
-          :value="species"
-        >
+        <option v-for="(species, index) in this.store.speciesList" :key="`species-${index}`" :value="species">
           {{ species }}
         </option>
-      </select>    
+      </select>
 
-      <button @click="$emit('search')" class="btn btn-primary mx-2">Search</button>
-      <button @click="this.store.queryParams = {}; $emit('search')" class="btn btn-warning mx-2">Reset</button>
+      <button @click="$emit('resetPaginator');
+        $emit('search');" class="btn btn-primary mx-2">
+        Search
+      </button>
+      <button @click="this.store.queryParams = {};
+        this.store.isVisible = true;
+        $emit('resetPaginator');
+        $emit('search')" class="btn btn-warning mx-2">
+        Reset
+      </button>
 
     </nav>
 
   </header>
-  
+
 </template>
 
 

@@ -4,7 +4,7 @@
       name: String,
       status: String,
       species: String,
-      image: String,
+      image: String
     }
   }
 </script>
@@ -13,7 +13,7 @@
 
 <template>
 
-  <div class="col text-center mb-5">
+  <div class="col text-center ">
 
     <div class="rounded-50 overflow-hidden mb-3 image">
       <img class="w-100" :src="image" :alt="name">
@@ -29,6 +29,10 @@
 
 
 <style lang="scss" scoped>
+
+.col{
+  min-height: 500px;
+}
 
 .image{
   &:hover{

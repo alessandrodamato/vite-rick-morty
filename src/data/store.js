@@ -5,11 +5,11 @@ export const store = reactive ({
   cardsList: [],
   statusList: [],
   speciesList: [],
+  queryParams:{},
+  info: {},
   isError: false,
-  pages: 1,
-  queryParams:{
-    name: '',
-    status: '',
-    species: ''
-  }
+  isNextDisabled: false,
+  isPrevDisabled: true,
+  isVisible: true,
+  currentPage: 1
 })
