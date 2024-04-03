@@ -34,21 +34,21 @@ import { store } from '../../data/store'
 
 <template>
 
-  <div :class="{'d-none' : !this.store.isVisible}">
+  <div :class="{'d-none' : !store.isVisible}">
 
     <button
       @click="paginator(false)"
       class="btn btn-primary text-uppercase"
-      :class="{'disabled' : this.store.isPrevDisabled}"
+      :class="{'disabled' : store.isPrevDisabled}"
     >&#60; prev
     </button>
 
-      <span class="mx-3">{{ this.store.currentPage }} / {{this.store.info.pages}}</span>
+      <span class="mx-3">{{ store.currentPage }} / {{store.info.pages}}</span>
 
    <button
       @click="paginator(true)"
       class="btn btn-primary text-uppercase"
-      :class="{'disabled' : this.store.isNextDisabled}"
+      :class="{'disabled' : store.isNextDisabled}"
     >next &#62;
   </button>
 

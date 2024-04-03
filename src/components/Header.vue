@@ -25,17 +25,17 @@ import { store } from '../data/store'
         placeholder="Search character"
         @keyup.enter="$emit('resetPaginator'); 
         $emit('search')"
-        v-model="this.store.queryParams.name"
+        v-model="store.queryParams.name"
       >
 
-      <select class="form-select mx-2" v-model="this.store.queryParams.status">
-        <option v-for="(status, index) in this.store.statusList" :key="`status-${index}`" :value="status">
+      <select class="form-select mx-2" v-model="store.queryParams.status">
+        <option v-for="(status, index) in store.statusList" :key="`status-${index}`" :value="status">
           {{ status }}
         </option>
       </select>
 
-      <select class="form-select mx-2" v-model="this.store.queryParams.species">
-        <option v-for="(species, index) in this.store.speciesList" :key="`species-${index}`" :value="species">
+      <select class="form-select mx-2" v-model="store.queryParams.species">
+        <option v-for="(species, index) in store.speciesList" :key="`species-${index}`" :value="species">
           {{ species }}
         </option>
       </select>
@@ -44,8 +44,8 @@ import { store } from '../data/store'
         $emit('search');" class="btn btn-primary mx-2">
         Search
       </button>
-      <button @click="this.store.queryParams = {};
-        this.store.isVisible = true;
+      <button @click="store.queryParams = {};
+        store.isVisible = true;
         $emit('resetPaginator');
         $emit('search')" class="btn btn-warning mx-2">
         Reset

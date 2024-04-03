@@ -82,6 +82,7 @@ export default {
       this.store.hasNext = false;
       this.store.hasPrev = false;
       this.store.currentPage = 1;
+      this.store.isNextDisabled = false
     }
   },
 
