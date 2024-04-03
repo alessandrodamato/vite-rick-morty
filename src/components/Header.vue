@@ -44,6 +44,7 @@ import { store } from '../data/store'
         $emit('search');" class="btn btn-primary mx-2">
         Search
       </button>
+      
       <button @click="store.queryParams = {};
         store.isVisible = true;
         $emit('resetPaginator');

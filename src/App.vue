@@ -33,7 +33,7 @@ export default {
             this.store.statusList.push(card.status)
           }
         })
-        if (!url) {this.setSpecies()}
+        if (!url) {this.setSpecies()};
         this.updateButtons();
       })
       .catch(error => {
